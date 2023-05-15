@@ -1,0 +1,7 @@
+C:\Users\user\source\repos\Task3\Task3\obj\Debug\net7.0\Task3.csproj.AssemblyReference.cache
+C:\Users\user\source\repos\Task3\Task3\obj\Debug\net7.0\Task3.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\user\source\repos\Task3\Task3\obj\Debug\net7.0\Task3.AssemblyInfoInputs.cache
+C:\Users\user\source\repos\Task3\Task3\obj\Debug\net7.0\Task3.AssemblyInfo.cs
+C:\Users\user\source\repos\Task3\Task3\obj\Debug\net7.0\Task3.csproj.CoreCompileInputs.cache
+C:\Users\user\source\repos\Task3\Task3\obj\Debug\net7.0\Task3.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\user\source\repos\Task3\Task3\obj\Debug\net7.0\Task3.MvcApplicationPartsAssemblyInfo.cache

@@ -1,0 +1,12 @@
+C:\Users\user\source\repos\Task3\Services.common\bin\Debug\net7.0\Services.common.deps.json
+C:\Users\user\source\repos\Task3\Services.common\bin\Debug\net7.0\Services.common.dll
+C:\Users\user\source\repos\Task3\Services.common\bin\Debug\net7.0\Services.common.pdb
+C:\Users\user\source\repos\Task3\Services.common\obj\Debug\net7.0\Services.common.csproj.AssemblyReference.cache
+C:\Users\user\source\repos\Task3\Services.common\obj\Debug\net7.0\Services.common.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\user\source\repos\Task3\Services.common\obj\Debug\net7.0\Services.common.AssemblyInfoInputs.cache
+C:\Users\user\source\repos\Task3\Services.common\obj\Debug\net7.0\Services.common.AssemblyInfo.cs
+C:\Users\user\source\repos\Task3\Services.common\obj\Debug\net7.0\Services.common.csproj.CoreCompileInputs.cache
+C:\Users\user\source\repos\Task3\Services.common\obj\Debug\net7.0\Services.common.dll
+C:\Users\user\source\repos\Task3\Services.common\obj\Debug\net7.0\refint\Services.common.dll
+C:\Users\user\source\repos\Task3\Services.common\obj\Debug\net7.0\Services.common.pdb
+C:\Users\user\source\repos\Task3\Services.common\obj\Debug\net7.0\ref\Services.common.dll
