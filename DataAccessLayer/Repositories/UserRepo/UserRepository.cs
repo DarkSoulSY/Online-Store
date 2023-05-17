@@ -32,5 +32,10 @@ namespace DataAccessLayer.Repositories.UserRepo
         {
             Create(user);            
         }
+
+        public async Task<User?> GetUserByCondition(Expression<Func<User, bool>> expression)
+        {
+            return await FindByCondition(expression).FirstOrDefaultAsync();
+        }
     }
 }

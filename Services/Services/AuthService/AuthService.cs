@@ -19,9 +19,38 @@ namespace Services.Services.AuthService
             _mapper = mapper;   
 
         }
-        public Task<ServiceResponse<string>> Login(UserSignInDto userSignInDto)
+        public async Task<ServiceResponse<string>> Login(UserSignInDto userSignInDto)
         {
-            throw new NotImplementedException();
+            var response = new ServiceResponse<string>();
+            var loggingUser = await _wrapper.User.GetUserByCondition(u => u.Username == userSignInDto.Username);
+            var exists = await UserExists(userSignInDto.Username);
+            if (exists)
+            {
+                var verified = VerifyPasswordHash(userSignInDto.Password, loggingUser!.PasswordHash, loggingUser.PasswordSalt);
+                if (verified)
+                    return new ServiceResponse<string>()
+                    {
+                        Data = loggingUser.Id + " ",
+                        Message = $"Welcome {loggingUser.Username}.",
+                        Success = true
+                    };
+                else
+                    return new ServiceResponse<string>()
+                    {
+                        Data = "",
+                        Message = $"Incorrect username or password.",
+                        Success = false
+                    };
+            }
+
+            return new ServiceResponse<string>()
+            {
+                Data = "",
+                Message = $"User not found.",
+                Success = false
+            };
+
+
         }
 
         public async Task<ServiceResponse<int?>> Register(UserSignUpDto userSignUpDto)
@@ -70,6 +99,15 @@ namespace Services.Services.AuthService
                 passwordHash = hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(password));
             }
 
+        }
+
+        private bool VerifyPasswordHash(string password, byte[] passwordHash, byte[] passwordSalt)
+        {
+            using (var hmac = new System.Security.Cryptography.HMACSHA512(passwordSalt))
+            {
+                var computedHash = hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(password));
+                return computedHash.SequenceEqual(passwordHash);
+            }
         }
     }
 }

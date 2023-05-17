@@ -22,11 +22,32 @@ namespace Task3.Controllers
         }
 
         [HttpPost("Register")]
-        
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+
         public async Task<ActionResult<ServiceResponse<int?>>> Register([FromBody] UserSignUpDto userSignUpDto)
         {
-            return Ok(await _auth.Register(userSignUpDto));
+            var response = await _auth.Register(userSignUpDto);
+            if (!response.Success)
+            {
+                return BadRequest(response);
+            }
+            return Ok(response);
         }
-        
+
+        [HttpPost("Login")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+
+        public async Task<ActionResult<ServiceResponse<string>>> Login([FromBody] UserSignInDto userSignInDto)
+        {
+            var response = await _auth.Login(userSignInDto);
+            if (!response.Success)
+            {
+                return BadRequest(response);
+            }
+            return Ok(response);
+        }
+
     }
 }

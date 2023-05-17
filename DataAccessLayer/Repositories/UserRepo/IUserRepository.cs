@@ -11,6 +11,7 @@ namespace DataAccessLayer.Repositories.UserRepo
         Task<User?> GetUserByUserName(string userName);
         Task<User?> GetUserByPhone(string phoneNumber);
         void CreateUser(User user);
+        Task<User?> GetUserByCondition(Expression<Func<User, bool>> expression);
     }
     
 }
