@@ -1,4 +1,5 @@
-﻿using DataAccessLayer.Repositories.UserRepo;
+﻿using DataAccessLayer.Repositories.RoleRepo;
+using DataAccessLayer.Repositories.UserRepo;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,7 @@ namespace DataAccessLayer.Repositories.WrapperRepo
     {
         private ApplicationContext _context;
         private IUserRepository? _user;
+        private IRoleRepository? _role;
 
         public RepositoryWrapper(ApplicationContext context, IUserRepository user)
         {
@@ -26,6 +28,18 @@ namespace DataAccessLayer.Repositories.WrapperRepo
                     _user = new UserRepository(_context);
                 }
                 return _user;
+            }
+        }
+
+        public IRoleRepository Role
+        {
+            get
+            {
+                if (_role == null)
+                {
+                    _role = new RoleRepository(_context);
+                }
+                return _role;
             }
         }
 

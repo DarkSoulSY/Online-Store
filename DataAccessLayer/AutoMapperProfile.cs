@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using DataAccessLayer.Models;
+using Services.common.RoleDto;
 using Services.common.UserDto;
 using System;
 using System.Collections.Generic;
@@ -21,6 +22,8 @@ namespace DataAccessLayer
                 .ForMember(dest => dest.Email, opt => opt.MapFrom(src => src.Email)); 
             CreateMap<User, UserSignInDto>();
             CreateMap<User, UserSignUpDto>();
+            CreateMap<Role, RoleDto>();
+            CreateMap<RoleDto, Role>();
         }
     }
 }
