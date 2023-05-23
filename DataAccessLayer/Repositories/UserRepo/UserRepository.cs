@@ -37,5 +37,15 @@ namespace DataAccessLayer.Repositories.UserRepo
         {
             return await FindByCondition(expression).FirstOrDefaultAsync();
         }
+
+        public void UpdateUser(User user)
+        {
+            Update(user);
+        }
+
+        public void DeleteUser(User user)
+        {
+            Delete(user);
+        }
     }
 }

@@ -1,4 +1,6 @@
-﻿using DataAccessLayer.Repositories.RoleRepo;
+﻿using DataAccessLayer.Repositories.PermissionRepo;
+using DataAccessLayer.Repositories.RolePermissionRepo;
+using DataAccessLayer.Repositories.RoleRepo;
 using DataAccessLayer.Repositories.UserRepo;
 using System;
 using System.Collections.Generic;
@@ -12,6 +14,8 @@ namespace DataAccessLayer.Repositories.WrapperRepo
     {
         IUserRepository User { get; }
         IRoleRepository Role { get; }
+        IPermissionRepository Permission { get; }
+        IUserRoleRepository UserRole { get; }
         Task SaveAsync();
 
     }

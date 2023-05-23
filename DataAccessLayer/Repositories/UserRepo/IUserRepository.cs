@@ -12,6 +12,8 @@ namespace DataAccessLayer.Repositories.UserRepo
         Task<User?> GetUserByPhone(string phoneNumber);
         void CreateUser(User user);
         Task<User?> GetUserByCondition(Expression<Func<User, bool>> expression);
+        void UpdateUser(User user);
+        void DeleteUser(User user);
     }
     
 }

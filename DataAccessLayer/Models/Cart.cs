@@ -10,6 +10,9 @@ namespace DataAccessLayer.Models
     {
         public int Id { get; set; }
         public int UserId { get; set; }
-        public User user { get; set; } = null!;
+        public User user { get; set; }
+        public List<Order> Orders { get; set; }
+
+
     }
 }

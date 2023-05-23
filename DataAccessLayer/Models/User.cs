@@ -18,5 +18,7 @@ namespace DataAccessLayer.Models
         public string Email { get; set; } = string.Empty;
         public byte[] PasswordHash { get; set; } = new byte[0];
         public byte[] PasswordSalt { get; set; } = new byte[0];
+
+        public Cart Cart { get; set; }
     }
 }

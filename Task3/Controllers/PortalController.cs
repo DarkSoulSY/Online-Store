@@ -1,12 +1,14 @@
 ﻿using AutoMapper;
 using DataAccessLayer.Models;
 using DataAccessLayer.Repositories.WrapperRepo;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Services.common.UserDto;
 using Services.Services.AuthService;
 
 namespace Task3.Controllers
 {
+    [Authorize()]
     [ApiController]
     [Route("api/[controller]")]
     public class PortalController : ControllerBase
@@ -20,7 +22,7 @@ namespace Task3.Controllers
             
             
         }
-
+        //[AllowAnonymous]
         [HttpPost("Register")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -35,6 +37,7 @@ namespace Task3.Controllers
             return Ok(response);
         }
 
+        [AllowAnonymous]
         [HttpPost("Login")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]

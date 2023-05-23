@@ -29,9 +29,9 @@ namespace DataAccessLayer.Repositories.RoleRepo
             return await FindAll().ToListAsync();
         }
 
-        public async Task<Role> GetSingleRole(Expression<Func<Role, bool>> expression)
+        public async Task<Role?> GetSingleRole(Expression<Func<Role, bool>> expression)
         {
-            return await FindByCondition(expression).FirstAsync();           
+            return await FindByCondition(expression).FirstOrDefaultAsync();           
         }   
 
         public void UpdateRole(Role role)

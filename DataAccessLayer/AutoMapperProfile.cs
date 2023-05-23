@@ -1,7 +1,9 @@
 ﻿using AutoMapper;
 using DataAccessLayer.Models;
+using Services.common.PermissionDto;
 using Services.common.RoleDto;
 using Services.common.UserDto;
+using Services.common.UserRoleEntity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,6 +26,12 @@ namespace DataAccessLayer
             CreateMap<User, UserSignUpDto>();
             CreateMap<Role, RoleDto>();
             CreateMap<RoleDto, Role>();
+            CreateMap<PermissionDto, Permission>();
+            CreateMap<Permission, PermissionDto>();
+            CreateMap<UserInfoDto, User>();
+            CreateMap<User, UserInfoDto>();
+            CreateMap<UserRoleDto, UserRoleEntity>();
+            CreateMap<UserRoleEntity, UserRoleDto>();
         }
     }
 }

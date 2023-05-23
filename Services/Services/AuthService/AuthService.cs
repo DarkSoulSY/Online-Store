@@ -2,7 +2,11 @@
 using DataAccessLayer.Models;
 using DataAccessLayer.Repositories.UserRepo;
 using DataAccessLayer.Repositories.WrapperRepo;
+using Microsoft.Extensions.Configuration;
+using Microsoft.IdentityModel.Tokens;
 using Services.common.UserDto;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
 using System.Text;
 
 
@@ -12,12 +16,13 @@ namespace Services.Services.AuthService
     {
         private readonly IRepositoryWrapper _wrapper;
         private readonly IMapper _mapper;
+        private readonly IConfiguration _configuration;
 
-        public AuthService(IRepositoryWrapper wrapper, IMapper mapper)
+        public AuthService(IRepositoryWrapper wrapper, IMapper mapper, IConfiguration configuration)
         {
             _wrapper = wrapper;
-            _mapper = mapper;   
-
+            _mapper = mapper;
+            _configuration = configuration;
         }
         public async Task<ServiceResponse<string>> Login(UserSignInDto userSignInDto)
         {
@@ -30,7 +35,7 @@ namespace Services.Services.AuthService
                 if (verified)
                     return new ServiceResponse<string>()
                     {
-                        Data = loggingUser.Id + " ",
+                        Data = CreateToken(loggingUser),
                         Message = $"Welcome {loggingUser.Username}.",
                         Success = true
                     };
@@ -82,7 +87,7 @@ namespace Services.Services.AuthService
                     Success = false
 
                 };
-        }
+        }     
 
         public async Task<bool> UserExists(string username)
         {
@@ -108,6 +113,138 @@ namespace Services.Services.AuthService
                 var computedHash = hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(password));
                 return computedHash.SequenceEqual(passwordHash);
             }
+        } 
+
+        private string CreateToken(User user)
+        {
+            var claims = new List<Claim>
+            {
+                new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
+                new Claim(ClaimTypes.Name, user.Username)
+            };
+
+            var appSettingsToken = _configuration.GetSection("AppSettings:Token").Value;
+
+            if (appSettingsToken is null)
+                throw new Exception("AppSettings Token is null!");
+
+            SymmetricSecurityKey key = new SymmetricSecurityKey(System.Text.Encoding.UTF8
+                .GetBytes(appSettingsToken));
+
+            SigningCredentials creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha512Signature);
+
+            var tokenDescriptor = new SecurityTokenDescriptor
+            {
+                Subject = new ClaimsIdentity(claims),
+                Expires = DateTime.Now.AddDays(1),
+                SigningCredentials = creds
+            };
+
+            JwtSecurityTokenHandler tokenHandler = new JwtSecurityTokenHandler();
+            SecurityToken token = tokenHandler.CreateToken(tokenDescriptor);
+
+            
+            return tokenHandler.WriteToken(token);
+        }
+        public async Task<List<UserInfoDto>> GetAllUsers()
+        {
+            var usersDto = new List<UserInfoDto>();
+            var users = await _wrapper.User.GetAll();
+            usersDto = users.Select(u => new UserInfoDto() { Id = u.Id , Address = u.Address , Email = u.Email , PhoneNumber = u.PhoneNumber , Username = u.Username }).ToList();
+            return usersDto;
+        }
+
+        public async Task<ServiceResponse<User?>> UpdateUser(User user, string password)
+        {
+            User? oldUser = await _wrapper.User.GetUserByCondition(U => U.Id == user.Id);
+
+            CreatePasswordHash(password, out byte[] passwordHash, out byte[] passwordSalt);
+            user.PasswordHash = passwordHash;
+            user.PasswordSalt = passwordSalt;
+
+            if (oldUser is not null)
+            {
+                _wrapper.User.UpdateUser(user);
+                await _wrapper.SaveAsync();
+                
+
+                return new ServiceResponse<User?>()
+                {
+                    Data = user,
+                    Message = "Updated successfully!",
+                    Success = true
+                };
+            }
+            else
+            {
+                return new ServiceResponse<User?>()
+                {
+                    Data = null,
+                    Message = "Could not update user, user not found!",
+                    Success = false
+                };
+            }    
+
+        }
+
+        public async Task<ServiceResponse<User?>> DeleteUser(int id)
+        {
+            User? user = await _wrapper.User.GetUserByCondition(U => U.Id == id);
+            
+
+            if (user is not null)
+            {
+                _wrapper.User.DeleteUser(user);
+                await _wrapper.SaveAsync();
+
+                User? checkUserExistance = await _wrapper.User.GetUserByCondition(U => U.Id == id);
+                if (checkUserExistance is null)
+                {
+                    return new ServiceResponse<User?>(){
+                        Data = null,
+                        Message = $"User {user.Username} Deleted!",
+                        Success = true
+                    };
+                }
+                else {
+                    return new ServiceResponse<User?>()
+                    {
+                        Data = null,
+                        Message = $"Could not delete {user.Username}!",
+                        Success = false
+                    };
+                }
+            }
+            return new ServiceResponse<User?>()
+            {
+                Data = null,
+                Message = $"Could not find {user.Username}!",
+                Success = false
+            };
+
+        }
+
+        public async Task<ServiceResponse<User?>> GetUser(int id)
+        {
+            User? user = await _wrapper.User.GetUserByCondition(U => U.Id == id);
+
+
+            if (user is not null)
+            {                                            
+                return new ServiceResponse<User?>()
+                {
+                    Data = user,
+                    Message = $"User {user.Username} retrieved!",
+                    Success = true
+                };                                                
+            }
+            return new ServiceResponse<User?>()
+            {
+                Data = null,
+                Message = $"Could not find user!",
+                Success = false
+            };
+
         }
     }
 }
