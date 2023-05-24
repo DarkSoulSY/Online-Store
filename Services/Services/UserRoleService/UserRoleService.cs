@@ -80,7 +80,7 @@ namespace Services.Services.UserRoleService
 
         public async Task<ServiceResponse<UserRoleEntity?>> GrantRole(UserRoleDto userRoleDto)
         {
-            var user = await _wrapper.User.GetUserByCondition(u => u.Username.Equals(userRoleDto.Username));
+            var user = await _wrapper.User.GetSingleUser(u => u.Username.Equals(userRoleDto.Username));
             var role = await _wrapper.Role.GetSingleRole(R => R.Name == userRoleDto.Role);
             if (user is not null && role is not null)
             {
@@ -122,7 +122,7 @@ namespace Services.Services.UserRoleService
             if (ur is not null) 
             { 
                 var role = await _wrapper.Role.GetSingleRole(r => r.Name == userRoleDto.Role);
-                var user = await _wrapper.User.GetUserByCondition(u => u.Username == userRoleDto.Username);
+                var user = await _wrapper.User.GetSingleUser(u => u.Username == userRoleDto.Username);
                 if (user is not null && role is not null) {
                     ur.RoleId = role.Id;
                     ur.UserId = user.Id;

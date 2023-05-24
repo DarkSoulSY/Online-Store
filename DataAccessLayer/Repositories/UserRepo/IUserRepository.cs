@@ -7,11 +7,9 @@ namespace DataAccessLayer.Repositories.UserRepo
 {
     public interface IUserRepository : IRepositoryBase<User>
     {
-        Task<List<User>> GetAll();
-        Task<User?> GetUserByUserName(string userName);
-        Task<User?> GetUserByPhone(string phoneNumber);
+        Task<List<User>> GetAllUsers();            
+        Task<User?> GetSingleUser(Expression<Func<User, bool>> expression);
         void CreateUser(User user);
-        Task<User?> GetUserByCondition(Expression<Func<User, bool>> expression);
         void UpdateUser(User user);
         void DeleteUser(User user);
     }

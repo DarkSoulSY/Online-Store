@@ -13,30 +13,19 @@ namespace DataAccessLayer.Repositories.UserRepo
 
         }
 
-        public async Task<List<User>> GetAll()
+        public async Task<List<User>> GetAllUsers()
         {
             return await FindAll().OrderBy(u => u.Id).ToListAsync();
         }
-
-        public async Task<User?> GetUserByUserName(string userName)
+        public async Task<User?> GetSingleUser(Expression<Func<User, bool>> expression)
         {
-            return await FindByCondition(u => u.Username == userName).FirstOrDefaultAsync();
-        }
-
-        public async Task<User?> GetUserByPhone(string phoneNumber)
-        {
-            return await FindByCondition(u => u.PhoneNumber == phoneNumber).FirstOrDefaultAsync();
+            return await FindByCondition(expression).FirstOrDefaultAsync();
         }
 
         public void CreateUser(User user)
         {
             Create(user);            
-        }
-
-        public async Task<User?> GetUserByCondition(Expression<Func<User, bool>> expression)
-        {
-            return await FindByCondition(expression).FirstOrDefaultAsync();
-        }
+        }        
 
         public void UpdateUser(User user)
         {
@@ -47,5 +36,6 @@ namespace DataAccessLayer.Repositories.UserRepo
         {
             Delete(user);
         }
+        
     }
 }

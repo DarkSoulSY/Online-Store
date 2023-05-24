@@ -1,7 +1,10 @@
 ﻿using DataAccessLayer.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Services.common.UserDto;
 using Services.common.UserRoleEntity;
+using Services.Services.AuthService;
+using Services.Services.RoleService;
 using Services.Services.UserPermissionService;
 using Services.Services.UserRoleService;
 using Task3.web.Models;
@@ -11,10 +14,14 @@ namespace Task3.web.Controllers
     public class UserRoleController : Controller
     {
         private readonly IUserRoleService _userRole;
+        private readonly IAuthService _auth;
+        private readonly IRoleService _role;
 
-        public UserRoleController(IUserRoleService userRole)
+        public UserRoleController(IUserRoleService userRole, IAuthService auth, IRoleService role)
         {
             _userRole = userRole;
+            _auth = auth;
+            _role = role;
         }
         public async Task<IActionResult> Index()
         {
@@ -36,15 +43,46 @@ namespace Task3.web.Controllers
 
         public async Task<ActionResult> Create()
         {
-            return View();
+            var response2 = await _auth.GetAllUsers();
+            var response3 = await _role.GetAllRoles();
+            var names = response2.Select(U => U.Username).ToList();
+            var roles = response3.Data.Select(R => R.Name).ToList();
+
+            UserRoleUpdateIndexModel model = new UserRoleUpdateIndexModel()
+            {
+                
+                Usernames = new List<SelectListItem>(),
+                RoleNames = new List<SelectListItem>()
+            };
+            foreach (var name in names)
+            {
+                model.Usernames.Add(new SelectListItem()
+                {
+                    Text = name,
+                    Value = name
+                });
+
+            }
+            foreach (var role in roles)
+            {
+                model.RoleNames.Add(new SelectListItem()
+                {
+                    Text = role,
+                    Value = role
+                });
+
+            }
+
+
+            return View(model);
         }
         [HttpPost]
-        public async Task<ActionResult> Create(UserRoleIndexModel newRole)
+        public async Task<ActionResult> Create(UserRoleUpdateIndexModel newRole)
         {
             UserRoleDto role = new UserRoleDto()
             {
-                Role = newRole.RoleName,
-                Username = newRole.Username
+                Role = newRole.SelectedRole,
+                Username = newRole.SelectedUsername
             };
             var response = await _userRole.GrantRole(role);
 
@@ -60,29 +98,52 @@ namespace Task3.web.Controllers
         [HttpGet]
         public async Task<ActionResult> Edit(int id)
         {
-            var response = await _userRole.GetUserRoleByCondition(UR => UR.Id == id);
+            var response = await _userRole.GetAllUserRole();
+            var response2 = await _auth.GetAllUsers();
+            var response3 = await _role.GetAllRoles();
+            var names = response2.Select(U => U.Username).ToList();
+            var roles = response3.Data.Select(R=> R.Name).ToList();
 
-            UserRoleIndexModel model = new UserRoleIndexModel()
+
+            UserRoleUpdateIndexModel model = new UserRoleUpdateIndexModel()
             {
-                Id = response.Data!.Id,
-                Username = response.Data.User.Username,
-                RoleName = response.Data.Role.Name
+                Id = id,
+                Usernames = new List<SelectListItem>(),
+                RoleNames = new List<SelectListItem>()
             };
+            foreach (var name in names) 
+            {
+                model.Usernames.Add(new SelectListItem() { 
+                Text = name,
+                Value = name
+                });
 
-           
+            }
+            foreach (var role in roles)
+            {
+                model.RoleNames.Add(new SelectListItem()
+                {
+                    Text = role,
+                    Value = role
+                });
+
+            }
+
+
             return View(model);
 
         }
 
         [HttpPost]
-        public async Task<ActionResult> Edit(UserRoleIndexModel model1)
+        public async Task<ActionResult> Edit(UserRoleUpdateIndexModel model1)
         {
-
+            
+            
             UserRoleDto role = new UserRoleDto
             {
                 Id = model1.Id,
-                Username = model1.Username,
-                Role = model1.RoleName,
+                Username = model1.SelectedUsername,
+                Role = model1.SelectedRole,
                 
                  
             };

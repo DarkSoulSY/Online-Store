@@ -27,7 +27,7 @@ namespace Services.Services.AuthService
         public async Task<ServiceResponse<string>> Login(UserSignInDto userSignInDto)
         {
             var response = new ServiceResponse<string>();
-            var loggingUser = await _wrapper.User.GetUserByCondition(u => u.Username == userSignInDto.Username);
+            var loggingUser = await _wrapper.User.GetSingleUser(u => u.Username == userSignInDto.Username);
             var exists = await UserExists(userSignInDto.Username);
             if (exists)
             {
@@ -91,7 +91,7 @@ namespace Services.Services.AuthService
 
         public async Task<bool> UserExists(string username)
         {
-            if (await _wrapper.User.GetUserByUserName(username) == null) { return false; }
+            if (await _wrapper.User.GetSingleUser(u => u.Username == username) == null) { return false; }
 
             else { return true; }
         }
@@ -149,14 +149,14 @@ namespace Services.Services.AuthService
         public async Task<List<UserInfoDto>> GetAllUsers()
         {
             var usersDto = new List<UserInfoDto>();
-            var users = await _wrapper.User.GetAll();
+            var users = await _wrapper.User.GetAllUsers();
             usersDto = users.Select(u => new UserInfoDto() { Id = u.Id , Address = u.Address , Email = u.Email , PhoneNumber = u.PhoneNumber , Username = u.Username }).ToList();
             return usersDto;
         }
 
         public async Task<ServiceResponse<User?>> UpdateUser(User user, string password)
         {
-            User? oldUser = await _wrapper.User.GetUserByCondition(U => U.Id == user.Id);
+            User? oldUser = await _wrapper.User.GetSingleUser(U => U.Id == user.Id);
 
             CreatePasswordHash(password, out byte[] passwordHash, out byte[] passwordSalt);
             user.PasswordHash = passwordHash;
@@ -189,7 +189,7 @@ namespace Services.Services.AuthService
 
         public async Task<ServiceResponse<User?>> DeleteUser(int id)
         {
-            User? user = await _wrapper.User.GetUserByCondition(U => U.Id == id);
+            User? user = await _wrapper.User.GetSingleUser(U => U.Id == id);
             
 
             if (user is not null)
@@ -197,7 +197,7 @@ namespace Services.Services.AuthService
                 _wrapper.User.DeleteUser(user);
                 await _wrapper.SaveAsync();
 
-                User? checkUserExistance = await _wrapper.User.GetUserByCondition(U => U.Id == id);
+                User? checkUserExistance = await _wrapper.User.GetSingleUser(U => U.Id == id);
                 if (checkUserExistance is null)
                 {
                     return new ServiceResponse<User?>(){
@@ -226,7 +226,7 @@ namespace Services.Services.AuthService
 
         public async Task<ServiceResponse<User?>> GetUser(int id)
         {
-            User? user = await _wrapper.User.GetUserByCondition(U => U.Id == id);
+            User? user = await _wrapper.User.GetSingleUser(U => U.Id == id);
 
 
             if (user is not null)
