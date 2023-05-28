@@ -1,6 +1,5 @@
 ﻿using System.Linq.Expressions;
 
-
 namespace DataAccessLayer.Repositories.BaseRepo
 {
     public interface IRepositoryBase<T>

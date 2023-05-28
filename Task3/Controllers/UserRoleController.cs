@@ -22,7 +22,7 @@ namespace Task3.Controllers
         [HttpPost]
         [Route("GrantRole")]
         [AllowAnonymous]
-        public async Task<ActionResult<ServiceResponse<UserRoleEntity?>>> Grant(UserRoleDto userRoleDto)
+        public async Task<ActionResult<ServiceResponse<UserRole?>>> Grant(UserRoleDto userRoleDto)
         {
             var response = await _userRoleService.GrantRole(userRoleDto);
 

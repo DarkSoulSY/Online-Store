@@ -49,11 +49,11 @@ namespace Services.Services.UserRoleService
             throw new NotImplementedException();
         }
 
-        public async Task<ServiceResponse<List<UserRoleEntity>>> GetAllUserRole()
+        public async Task<ServiceResponse<List<UserRole>>> GetAllUserRole()
         {
             var list = await  _wrapper.UserRole.GetAllUserRoles();
             
-            return new ServiceResponse<List<UserRoleEntity>>(){
+            return new ServiceResponse<List<UserRole>>(){
                 Data = list,
                 Message = "Success",
                 Success = true
@@ -63,22 +63,22 @@ namespace Services.Services.UserRoleService
             
         }
 
-        public async Task<ServiceResponse<UserRoleEntity>> GetUserRoleByCondition(Expression<Func<UserRoleEntity, bool>> expression)
+        public async Task<ServiceResponse<UserRole>> GetUserRoleByCondition(Expression<Func<UserRole, bool>> expression)
         {
             return
-                new ServiceResponse<UserRoleEntity>() {
+                new ServiceResponse<UserRole>() {
                     Data = await _wrapper.UserRole.GetUserRoleByCondition(expression),
                     Message = "",
                 Success = true
                 };
         }
 
-        public Task<ServiceResponse<List<UserRoleEntity>>> GetUserRoles()
+        public Task<ServiceResponse<List<UserRole>>> GetUserRoles()
         {
             throw new NotImplementedException();
         }
 
-        public async Task<ServiceResponse<UserRoleEntity?>> GrantRole(UserRoleDto userRoleDto)
+        public async Task<ServiceResponse<UserRole?>> GrantRole(UserRoleDto userRoleDto)
         {
             var user = await _wrapper.User.GetSingleUser(u => u.Username.Equals(userRoleDto.Username));
             var role = await _wrapper.Role.GetSingleRole(R => R.Name == userRoleDto.Role);
@@ -86,7 +86,7 @@ namespace Services.Services.UserRoleService
             {
                 //userRoleEntity.UserId = user.Id;
                 //userRoleEntity.RoleId = role.Id;
-                var userRoleEntity = new UserRoleEntity()
+                var userRoleEntity = new UserRole()
                 {
                     UserId = user.Id,
                     RoleId = role.Id,
@@ -99,14 +99,14 @@ namespace Services.Services.UserRoleService
             var newUserRoleEntity = await _wrapper.UserRole.GetUserRoleByCondition(UR => UR.Role == role && UR.User == user);
 
             if (newUserRoleEntity is not null)
-                return new ServiceResponse<UserRoleEntity?>()
+                return new ServiceResponse<UserRole?>()
                 {
                     Data = newUserRoleEntity,
                     Message = $"Role {userRoleDto!.Role} added to {userRoleDto.Username}! ",
                     Success = true,
                 };
             else
-                return new ServiceResponse<UserRoleEntity?>()
+                return new ServiceResponse<UserRole?>()
                 {
                     Data = null,
                     Message = $"Could not add {userRoleDto!.Role} to {userRoleDto.Username}!",
@@ -117,7 +117,7 @@ namespace Services.Services.UserRoleService
 
         public async Task<ServiceResponse<bool>> UpdateRole(UserRoleDto userRoleDto)
         {
-            UserRoleEntity ur = await _wrapper.UserRole.GetUserRoleByCondition(UR => UR.Id == userRoleDto.Id);
+            UserRole ur = await _wrapper.UserRole.GetUserRoleByCondition(UR => UR.Id == userRoleDto.Id);
 
             if (ur is not null) 
             { 

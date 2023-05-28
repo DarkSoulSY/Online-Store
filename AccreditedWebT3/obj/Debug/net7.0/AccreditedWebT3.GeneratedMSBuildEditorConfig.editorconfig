@@ -16,20 +16,12 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\user\source\repos\Task3\AccreditedWebT3
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/user/source/repos/Task3/AccreditedWebT3/Views/Home/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Users/user/source/repos/Task3/AccreditedWebT3/Views/Portal/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9ydGFsXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/user/source/repos/Task3/AccreditedWebT3/Views/Portal/Register.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9ydGFsXFJlZ2lzdGVyLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/user/source/repos/Task3/AccreditedWebT3/Views/Shared/Error.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/user/source/repos/Task3/AccreditedWebT3/Views/Shared/_ValidationScriptsPartial.cshtml]

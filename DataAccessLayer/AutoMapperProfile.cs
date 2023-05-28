@@ -30,8 +30,8 @@ namespace DataAccessLayer
             CreateMap<Permission, PermissionDto>();
             CreateMap<UserInfoDto, User>();
             CreateMap<User, UserInfoDto>();
-            CreateMap<UserRoleDto, UserRoleEntity>();
-            CreateMap<UserRoleEntity, UserRoleDto>();
+            CreateMap<UserRoleDto, UserRole>();
+            CreateMap<UserRole, UserRoleDto>();
         }
     }
 }

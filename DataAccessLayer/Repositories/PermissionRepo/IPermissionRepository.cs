@@ -1,5 +1,6 @@
 ﻿using DataAccessLayer.Models;
 using System.Linq.Expressions;
+
 namespace DataAccessLayer.Repositories.PermissionRepo
 {
     public interface IPermissionRepository

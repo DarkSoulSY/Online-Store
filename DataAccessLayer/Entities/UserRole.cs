@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.Models
 {
-    public class UserRoleEntity
+    public class UserRole
     {
         public int Id { get; set; }
         public User User { get; set; }

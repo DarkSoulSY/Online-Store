@@ -1,6 +1,5 @@
 ﻿using DataAccessLayer.Models;
 using DataAccessLayer.Repositories.BaseRepo;
-using Services.common.UserDto;
 using System.Linq.Expressions;
 
 namespace DataAccessLayer.Repositories.UserRepo

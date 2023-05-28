@@ -1,12 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using DataAccessLayer.Models;
+using DataAccessLayer.Repositories.BaseRepo;
+using System.Linq.Expressions;
 
-namespace DataAccessLayer.Repositories.CartRepository
+namespace DataAccessLayer.Repositories.CartRepo
 {
-    public interface ICartRepository
+    public interface ICartRepository : IRepositoryBase<Cart>
     {
+        Task<List<Cart>> GetAllCarts();
+        Task<Cart?> GetSingleCart(Expression<Func<Cart, bool>> expression);
+        void CreateCart(Cart cart);
+        void UpdateCart(Cart cart);
+        void DeleteCart(Cart cart);
     }
 }

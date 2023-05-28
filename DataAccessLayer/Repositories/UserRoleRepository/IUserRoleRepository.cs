@@ -1,20 +1,17 @@
-﻿
-
-
-using DataAccessLayer.Models;
+﻿using DataAccessLayer.Models;
 using System.Linq.Expressions;
 
 namespace DataAccessLayer.Repositories.RolePermissionRepo
 {
     public interface IUserRoleRepository
     {
-        Task<List<UserRoleEntity>> GetUserRoles();
-        Task<List<UserRoleEntity>> GetAllUserRoles();
-        Task<UserRoleEntity> GetUserRoleByCondition(Expression<Func<UserRoleEntity, bool>> expression);
+        Task<List<UserRole>> GetUserRoles();
+        Task<List<UserRole>> GetAllUserRoles();
+        Task<UserRole> GetUserRoleByCondition(Expression<Func<UserRole, bool>> expression);
 
-        void GrantRole(UserRoleEntity userRoleEntity);
-        void DenyRole(UserRoleEntity userRoleEntity);
-        void UpdateRole(UserRoleEntity userRoleEntity);
+        void GrantRole(UserRole userRoleEntity);
+        void DenyRole(UserRole userRoleEntity);
+        void UpdateRole(UserRole userRoleEntity);
 
        
     }

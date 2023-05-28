@@ -12,6 +12,8 @@ namespace DataAccessLayer.Models
         public int CartId { get; set; }
         public Cart Cart { get; set; }
         public float Total { get; set; }
+        public Status Status { get; set; }
+        public int StatusId { get; set; }
         public List<ItemSizePrice> itemSizePrices { get; set; }
 
     }

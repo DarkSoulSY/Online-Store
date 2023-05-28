@@ -71,7 +71,7 @@ namespace Task3.web.Controllers
 
         }
 
-        public async Task<ActionResult> Create()
+        public ActionResult Create()
         {           
                 return View();            
         }
@@ -97,7 +97,7 @@ namespace Task3.web.Controllers
 
         }
 
-        public async Task<ActionResult> Details(int id)
+        public ActionResult Details(int id)
         {
             
             return RedirectToAction("Index");

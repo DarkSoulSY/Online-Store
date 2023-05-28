@@ -1,7 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
 
-
 namespace DataAccessLayer.Repositories.BaseRepo
 {
     public abstract class RepositoryBase<T> : IRepositoryBase<T> where T : class

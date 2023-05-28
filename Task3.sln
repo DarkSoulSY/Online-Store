@@ -13,12 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Services", "Services\Servic
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Task3.web", "Task3.web\Task3.web.csproj", "{A5261099-CDC0-4C37-922A-9215D5E9B154}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccreditedWebT3", "AccreditedWebT3\AccreditedWebT3.csproj", "{0366D14E-BC5E-46A2-B14E-2DB4F8661B13}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{6A49DC30-C145-4355-9849-664CA06508A8}"
-	ProjectSection(SolutionItems) = preProject
-		.editorconfig = .editorconfig
-	EndProjectSection
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AccreditedWebT3", "AccreditedWebT3\AccreditedWebT3.csproj", "{0366D14E-BC5E-46A2-B14E-2DB4F8661B13}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

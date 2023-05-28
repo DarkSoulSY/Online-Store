@@ -19,7 +19,6 @@ namespace DataAccessLayer.Models
         public Category Category { get; set; }
 
         public List<ItemSizePrice> ItemSizePrices { get; set; }
-        public Type Type { get; set; }
-        public int TypeId { get; set; }
+        
     }
 }
