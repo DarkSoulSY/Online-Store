@@ -31,5 +31,5 @@ each and every task that had been given to me by researching throughouly, unders
 
 Lastly they told me to leave the current web project and create a new one instead but this time an actual website that actually works and corresponds with the ERD we had worked upon 
 in an earlier task.
-![ERD]([image link](https://github.com/Nasser-Devoyard/Task3/blob/master/DevoyardTask2ERD.png))
+![ERD](https://raw.githubusercontent.com/Nasser-Devoyard/Task3/master/DevoyardTask2ERD.png)
 
