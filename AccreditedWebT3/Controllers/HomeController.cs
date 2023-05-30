@@ -25,13 +25,14 @@ namespace AccreditedWebT3.Controllers
                 Category = model.Category,
                 CategoryItems = model.Items
             }).ToList();
-
+            //
             return View(mappedList);
         }
 
         public async Task AddToCart()
         {
             await _home.AddToCart(_httpContext.HttpContext.Session.GetString("Username"));
+            
         }
     }
 }
