@@ -31,5 +31,7 @@ each and every task that had been given to me by researching throughouly, unders
 
 Lastly they told me to leave the current web project and create a new one instead but this time an actual website that actually works and corresponds with the ERD we had worked upon 
 in an earlier task.
+
+And i'm Currently working on it I have made the login, register pages, and if the user logged it would redirect him to the home controller and it would display all the available items along with button Add To Cart... istay tuned for follow ups.
 ![ERD](https://raw.githubusercontent.com/Nasser-Devoyard/Task3/master/DevoyardTask2ERD.png)
 
