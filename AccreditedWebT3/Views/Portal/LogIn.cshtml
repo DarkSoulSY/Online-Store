@@ -1,20 +1,19 @@
 ﻿@model AccreditedWebT3.Models.UserLoginModel
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "LogIn";
 }
 
+<h1>Log In</h1>
 
-
-<h4>Log in</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Index">
+        <form asp-action="CheckUserCredentials">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Username" class="control-label"></label>
-                <input asp-for="Username" class="form-control" type="password" />
+                <input asp-for="Username" class="form-control" />
                 <span asp-validation-for="Username" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -22,22 +21,14 @@
                 <input asp-for="Password" class="form-control" />
                 <span asp-validation-for="Password" class="text-danger"></span>
             </div>
-            <br />
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Log In" class="btn btn-primary" />
             </div>
         </form>
-        <hr/>
-        <div class="form-group">
-            <p>If you're not logged in, <a href="@Url.Action("Register", "Portal")">Register Here!</a>.</p>
-        </div>
     </div>
 </div>
 
-@*<div>
-    <a asp-action="Index">Back to List</a>
-</div>*@
+<div>
+    <p>Don't have an account? <a asp-action="Register">Register here!</a></p>
+</div>
 
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}

@@ -1,12 +1,9 @@
-﻿using DataAccessLayer.Models;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Services.common.UserDto;
 using Services.common.UserRoleEntity;
 using Services.Services.AuthService;
 using Services.Services.RoleService;
 using Services.Services.UserPermissionService;
-using Services.Services.UserRoleService;
 using Task3.web.Models;
 
 namespace Task3.web.Controllers

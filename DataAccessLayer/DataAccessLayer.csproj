@@ -20,9 +20,4 @@
     <ProjectReference Include="..\Services.common\Services.common.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Repositories\ItemSizePriceRepo\" />
-    <Folder Include="Repositories\ItemSizePriceOrderRepo\" />
-  </ItemGroup>
-
 </Project>

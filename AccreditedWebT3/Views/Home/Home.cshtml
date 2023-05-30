@@ -1,0 +1,46 @@
+﻿@model List<Home>
+@{
+    ViewData["Title"] = "Home";
+}
+
+<h1>Home</h1>
+<br/><br/><br/>
+
+
+
+@foreach (var category in Model)
+{
+    if (category.CategoryItems.Count != 0)
+    {
+        <h6>@category.Category</h6>
+
+        <div class="row" style="margin: 5px">
+            @foreach (var item in category.CategoryItems)
+            {
+                <div class="col-md-4" style="margin: 5px">
+                    <div class="card" style="width: fit-content; height: fit-content; margin: 5px">
+                        <img src="@item.PictureURL" class="card-img-top" alt="Item Photo" style="width: 200px; height: 200px;">
+                        <div class="card-body">
+                            <h5 class="card-title">@item.Name</h5>
+                            <form method="post" action="/Home/YourMethod" class="form-inline">
+                                <div class="form-group">
+                                    <br/>
+                                    <select name="selectedSize" class="form-control">
+                                        @foreach (var size in item.SizePrice)
+                                        {
+                                            <option value="@size.Name">@size.Name</option>
+                                        }
+                                    </select>
+                                </div>
+                                <br/>
+                                <button type="submit" class="btn btn-primary">Add to Cart</button>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>       
+    }
+}
+

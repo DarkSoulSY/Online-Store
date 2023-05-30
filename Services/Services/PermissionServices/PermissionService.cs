@@ -2,7 +2,7 @@
 using DataAccessLayer.Models;
 using DataAccessLayer.Repositories.PermissionRepo;
 using DataAccessLayer.Repositories.WrapperRepo;
-using Services.common.PermissionDto;
+using Services.common.Permission;
 
 
 

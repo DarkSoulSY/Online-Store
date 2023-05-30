@@ -1,7 +1,7 @@
 ﻿using DataAccessLayer.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Services.common.PermissionDto;
+using Services.common.Permission;
 using Services.Services.PermissionService;
 
 namespace Task3.Controllers

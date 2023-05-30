@@ -1,5 +1,5 @@
 ﻿using DataAccessLayer.Models;
-using Services.common.RoleDto;
+using Services.common.Role;
 
 
 namespace Services.Services.RoleService

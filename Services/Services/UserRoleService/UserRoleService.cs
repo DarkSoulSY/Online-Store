@@ -1,6 +1,4 @@
-﻿
-
-using AutoMapper;
+﻿using AutoMapper;
 using DataAccessLayer.Models;
 using DataAccessLayer.Repositories.WrapperRepo;
 using Services.common.UserRoleEntity;

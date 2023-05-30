@@ -5,7 +5,7 @@ using System.Linq.Expressions;
 
 namespace DataAccessLayer.Repositories.ItemRepo
 {
-    internal class ItemRepository : RepositoryBase<Item>, IItemRepository
+    public class ItemRepository : RepositoryBase<Item>, IItemRepository
     {
         public ItemRepository(ApplicationContext applicationContext) : base (applicationContext)
         {

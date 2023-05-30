@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Services.common.UserDto
+namespace Services.common.User
 {
     public class UserSignInDto
     {

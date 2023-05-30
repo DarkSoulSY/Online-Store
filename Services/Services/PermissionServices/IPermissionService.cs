@@ -1,5 +1,5 @@
 ﻿using DataAccessLayer.Models;
-using Services.common.PermissionDto;
+using Services.common.Permission;
 
 
 namespace Services.Services.PermissionService

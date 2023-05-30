@@ -1,7 +1,7 @@
 ﻿using AccreditedWebT3.Models;
 using DataAccessLayer.Models;
 using Microsoft.AspNetCore.Mvc;
-using Services.common.UserDto;
+using Services.common.User;
 using Services.Services.AuthService;
 
 namespace AccreditedWebT3.Controllers
@@ -17,18 +17,36 @@ namespace AccreditedWebT3.Controllers
             _auth = auth;
         }
 
-        public async Task<IActionResult> Index(UserLoginModel userLoginModel)
+        public IActionResult LogIn()
         {
-            ServiceResponse<String> response = await _auth.Login(new UserSignInDto() { Username = userLoginModel.Username, Password = userLoginModel.Password});
-            
+            if (CheckSession())
+                RedirectToAction("Home", "Home");
+            return View();
+
+        }
+
+        public async Task<IActionResult> CheckUserCredentials(UserLoginModel userLoginModel)
+        {
+            ServiceResponse<String> response = await _auth.Login(new UserSignInDto() { Username = userLoginModel.Username, Password = userLoginModel.Password });
+
             if (response.Success)
             {
-                _httpContext.HttpContext.Session.SetString("Username", userLoginModel.Username);
+                _httpContext.HttpContext!.Session.SetString("Username", userLoginModel.Username);
                 _httpContext.HttpContext.Session.SetString("Token", response.Message);
-
+                return RedirectToAction("Home", "Home");
             }
+            return RedirectToAction("LogIn", "Portal");
 
-            return View();
+        }
+
+        public bool CheckSession()
+        {
+            if (_httpContext.HttpContext!.Session.GetString("Username") is not null && _httpContext.HttpContext.Session.GetString("Token") is not null)
+            {
+                return true;
+            }
+            else
+                return false;
         }
 
         public IActionResult Register() 

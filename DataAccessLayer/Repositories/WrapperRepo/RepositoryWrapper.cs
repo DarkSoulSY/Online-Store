@@ -1,11 +1,15 @@
-﻿using DataAccessLayer.Repositories.CartRepo;
+﻿using DataAccessLayer.Models;
+using DataAccessLayer.Repositories.CartRepo;
 using DataAccessLayer.Repositories.CategoryRepo;
 using DataAccessLayer.Repositories.ItemRepo;
+using DataAccessLayer.Repositories.ItemSizePriceOrderRepo;
+using DataAccessLayer.Repositories.ItemSizePriceRepo;
 using DataAccessLayer.Repositories.OrderRepo;
 using DataAccessLayer.Repositories.PermissionRepo;
 using DataAccessLayer.Repositories.PictureRepo;
 using DataAccessLayer.Repositories.RolePermissionRepo;
 using DataAccessLayer.Repositories.RoleRepo;
+using DataAccessLayer.Repositories.SizeRepo;
 using DataAccessLayer.Repositories.StatusRepo;
 using DataAccessLayer.Repositories.UserRepo;
 
@@ -25,12 +29,49 @@ namespace DataAccessLayer.Repositories.WrapperRepo
         private IOrderRepository? _order;
         private IPictureRepository? _picture;
         private IStatusRepository? _status;
+        private IItemSizePriceRepository _itemSizePrice;
+        private IItemSizePriceOrderRepository _itemSizePriceOrder;
+        private ISizeRepository _size;
 
         public RepositoryWrapper(ApplicationContext context)
         {
             _context = context;        
         }
+        public IItemSizePriceRepository ItemSizePrice
+        {
+            get
+            {
+                if (_itemSizePrice == null)
+                {
+                    _itemSizePrice = new ItemSizePriceRepository(_context);
+                }
+                return _itemSizePrice;
+            }
+        }
 
+        public IItemSizePriceOrderRepository ItemSizePriceOrder
+        {
+            get
+            {
+                if (_itemSizePriceOrder == null)
+                {
+                    _itemSizePriceOrder = new ItemSizePriceOrderRepository(_context);
+                }
+                return _itemSizePriceOrder;
+            }
+        }
+
+        public ISizeRepository Size
+        {
+            get
+            {
+                if (_size == null)
+                {
+                    _size = new SizeRepository(_context);
+                }
+                return _size;
+            }
+        }
         public IUserRoleRepository UserRole
         {
             get

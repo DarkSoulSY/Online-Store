@@ -12,7 +12,7 @@ namespace DataAccessLayer.Repositories.ItemSizePriceRepo
     public interface IItemSizePriceRepository : IRepositoryBase<ItemSizePrice>
     {
         Task<List<ItemSizePrice>> GetAllItemSizePrices();
-        Task<ItemSizePrice?> GetSingleItemSizePrice(Expression<Func<ItemSizePrice, bool>> expression);
+        Task<ItemSizePrice?> GetSingleItemSizePrice(Expression<Func<ItemSizePrice, bool>> expression);        
         void CreateItemSizePrice(ItemSizePrice itemSizePrice);
         void UpdateItemSizePrice(ItemSizePrice itemSizePrice);
         void DeleteItemSizePrice(ItemSizePrice itemSizePrice);

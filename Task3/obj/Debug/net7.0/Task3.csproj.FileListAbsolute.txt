@@ -1,9 +1,3 @@
-C:\Users\user\source\repos\Task3\Task3\obj\Debug\net7.0\Task3.csproj.AssemblyReference.cache
-C:\Users\user\source\repos\Task3\Task3\obj\Debug\net7.0\Task3.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\user\source\repos\Task3\Task3\obj\Debug\net7.0\Task3.AssemblyInfoInputs.cache
-C:\Users\user\source\repos\Task3\Task3\obj\Debug\net7.0\Task3.AssemblyInfo.cs
-C:\Users\user\source\repos\Task3\Task3\obj\Debug\net7.0\Task3.csproj.CoreCompileInputs.cache
-C:\Users\user\source\repos\Task3\Task3\obj\Debug\net7.0\Task3.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\user\source\repos\Task3\Task3\bin\Debug\net7.0\appsettings.Development.json
 C:\Users\user\source\repos\Task3\Task3\bin\Debug\net7.0\appsettings.json
 C:\Users\user\source\repos\Task3\Task3\bin\Debug\net7.0\Task3.exe
@@ -16,6 +10,7 @@ C:\Users\user\source\repos\Task3\Task3\bin\Debug\net7.0\AutoMapper.Extensions.Mi
 C:\Users\user\source\repos\Task3\Task3\bin\Debug\net7.0\Azure.Core.dll
 C:\Users\user\source\repos\Task3\Task3\bin\Debug\net7.0\Azure.Identity.dll
 C:\Users\user\source\repos\Task3\Task3\bin\Debug\net7.0\Humanizer.dll
+C:\Users\user\source\repos\Task3\Task3\bin\Debug\net7.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 C:\Users\user\source\repos\Task3\Task3\bin\Debug\net7.0\Microsoft.AspNetCore.OpenApi.dll
 C:\Users\user\source\repos\Task3\Task3\bin\Debug\net7.0\Microsoft.Bcl.AsyncInterfaces.dll
 C:\Users\user\source\repos\Task3\Task3\bin\Debug\net7.0\Microsoft.Data.SqlClient.dll
@@ -37,6 +32,9 @@ C:\Users\user\source\repos\Task3\Task3\bin\Debug\net7.0\Microsoft.OpenApi.dll
 C:\Users\user\source\repos\Task3\Task3\bin\Debug\net7.0\Microsoft.SqlServer.Server.dll
 C:\Users\user\source\repos\Task3\Task3\bin\Debug\net7.0\Microsoft.Win32.SystemEvents.dll
 C:\Users\user\source\repos\Task3\Task3\bin\Debug\net7.0\Mono.TextTemplating.dll
+C:\Users\user\source\repos\Task3\Task3\bin\Debug\net7.0\Scrutor.dll
+C:\Users\user\source\repos\Task3\Task3\bin\Debug\net7.0\Swashbuckle.AspNetCore.Filters.dll
+C:\Users\user\source\repos\Task3\Task3\bin\Debug\net7.0\Swashbuckle.AspNetCore.Filters.Abstractions.dll
 C:\Users\user\source\repos\Task3\Task3\bin\Debug\net7.0\Swashbuckle.AspNetCore.Swagger.dll
 C:\Users\user\source\repos\Task3\Task3\bin\Debug\net7.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Users\user\source\repos\Task3\Task3\bin\Debug\net7.0\Swashbuckle.AspNetCore.SwaggerUI.dll
@@ -67,6 +65,13 @@ C:\Users\user\source\repos\Task3\Task3\bin\Debug\net7.0\Services.dll
 C:\Users\user\source\repos\Task3\Task3\bin\Debug\net7.0\Services.pdb
 C:\Users\user\source\repos\Task3\Task3\bin\Debug\net7.0\DataAccessLayer.pdb
 C:\Users\user\source\repos\Task3\Task3\bin\Debug\net7.0\Services.common.pdb
+C:\Users\user\source\repos\Task3\Task3\obj\Debug\net7.0\Task3.csproj.AssemblyReference.cache
+C:\Users\user\source\repos\Task3\Task3\obj\Debug\net7.0\Task3.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\user\source\repos\Task3\Task3\obj\Debug\net7.0\Task3.AssemblyInfoInputs.cache
+C:\Users\user\source\repos\Task3\Task3\obj\Debug\net7.0\Task3.AssemblyInfo.cs
+C:\Users\user\source\repos\Task3\Task3\obj\Debug\net7.0\Task3.csproj.CoreCompileInputs.cache
+C:\Users\user\source\repos\Task3\Task3\obj\Debug\net7.0\Task3.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\user\source\repos\Task3\Task3\obj\Debug\net7.0\Task3.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\user\source\repos\Task3\Task3\obj\Debug\net7.0\staticwebassets\msbuild.Task3.Microsoft.AspNetCore.StaticWebAssets.props
 C:\Users\user\source\repos\Task3\Task3\obj\Debug\net7.0\staticwebassets\msbuild.build.Task3.props
 C:\Users\user\source\repos\Task3\Task3\obj\Debug\net7.0\staticwebassets\msbuild.buildMultiTargeting.Task3.props
@@ -81,8 +86,3 @@ C:\Users\user\source\repos\Task3\Task3\obj\Debug\net7.0\refint\Task3.dll
 C:\Users\user\source\repos\Task3\Task3\obj\Debug\net7.0\Task3.pdb
 C:\Users\user\source\repos\Task3\Task3\obj\Debug\net7.0\Task3.genruntimeconfig.cache
 C:\Users\user\source\repos\Task3\Task3\obj\Debug\net7.0\ref\Task3.dll
-C:\Users\user\source\repos\Task3\Task3\obj\Debug\net7.0\Task3.MvcApplicationPartsAssemblyInfo.cs
-C:\Users\user\source\repos\Task3\Task3\bin\Debug\net7.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
-C:\Users\user\source\repos\Task3\Task3\bin\Debug\net7.0\Scrutor.dll
-C:\Users\user\source\repos\Task3\Task3\bin\Debug\net7.0\Swashbuckle.AspNetCore.Filters.dll
-C:\Users\user\source\repos\Task3\Task3\bin\Debug\net7.0\Swashbuckle.AspNetCore.Filters.Abstractions.dll

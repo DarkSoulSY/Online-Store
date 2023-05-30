@@ -1,14 +1,11 @@
 ﻿using AutoMapper;
 using DataAccessLayer.Models;
-using DataAccessLayer.Repositories.UserRepo;
 using DataAccessLayer.Repositories.WrapperRepo;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
-using Services.common.UserDto;
+using Services.common.User;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
-using System.Text;
-
 
 namespace Services.Services.AuthService
 {

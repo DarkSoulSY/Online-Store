@@ -1,9 +1,7 @@
-﻿using AutoMapper;
-using DataAccessLayer.Models;
-using DataAccessLayer.Repositories.WrapperRepo;
+﻿using DataAccessLayer.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Services.common.UserDto;
+using Services.common.User;
 using Services.Services.AuthService;
 
 namespace Task3.Controllers

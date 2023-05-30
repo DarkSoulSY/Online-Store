@@ -1,10 +1,5 @@
 ﻿using DataAccessLayer.Models;
-using Services.common.UserDto;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Services.common.User;
 
 namespace Services.Services.AuthService
 {

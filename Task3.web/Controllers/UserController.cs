@@ -1,7 +1,6 @@
 ﻿using DataAccessLayer.Models;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Services.common.UserDto;
+using Services.common.User;
 using Services.Services.AuthService;
 using Task3.web.Models;
 

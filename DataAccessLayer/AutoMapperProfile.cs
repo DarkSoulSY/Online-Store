@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
 using DataAccessLayer.Models;
-using Services.common.PermissionDto;
-using Services.common.RoleDto;
-using Services.common.UserDto;
+using Services.common.Permission;
+using Services.common.Role;
+using Services.common.User;
 using Services.common.UserRoleEntity;
 using System;
 using System.Collections.Generic;

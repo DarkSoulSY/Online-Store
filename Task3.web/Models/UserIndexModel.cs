@@ -1,4 +1,4 @@
-﻿using Services.common.UserDto;
+﻿using Services.common.User;
 
 namespace Task3.web.Models
 {

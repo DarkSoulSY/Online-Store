@@ -1,6 +1,4 @@
-﻿
-
-using DataAccessLayer.Models;
+﻿using DataAccessLayer.Models;
 using Services.common.UserRoleEntity;
 using System.Linq.Expressions;
 

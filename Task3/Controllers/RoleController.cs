@@ -1,7 +1,7 @@
 ﻿using DataAccessLayer.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Services.common.RoleDto;
+using Services.common.Role;
 using Services.Services.RoleService;
 
 namespace Task3.Controllers

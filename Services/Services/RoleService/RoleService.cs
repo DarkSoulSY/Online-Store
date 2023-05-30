@@ -4,7 +4,7 @@ using AutoMapper;
 using DataAccessLayer.Models;
 using DataAccessLayer.Repositories.RoleRepo;
 using DataAccessLayer.Repositories.WrapperRepo;
-using Services.common.RoleDto;
+using Services.common.Role;
 
 namespace Services.Services.RoleService
 {

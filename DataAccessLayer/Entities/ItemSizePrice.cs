@@ -13,6 +13,6 @@ namespace DataAccessLayer.Models
         public Item Item { get; set; }
         public int SizeId { get; set; }
         public Size Size { get; set; }
-        public int MyProperty { get; set; }
+        public int Price { get; set; }
     }
 }

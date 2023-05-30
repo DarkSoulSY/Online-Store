@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.Repositories.ItemSizePriceRepo
 {
-    internal class ItemSizePriceRepository : RepositoryBase<ItemSizePrice>, IItemSizePriceRepository
+    public class ItemSizePriceRepository : RepositoryBase<ItemSizePrice>, IItemSizePriceRepository
     {
         public ItemSizePriceRepository(ApplicationContext applicationContext) : base (applicationContext)
         {
@@ -29,13 +29,13 @@ namespace DataAccessLayer.Repositories.ItemSizePriceRepo
 
         public async Task<List<ItemSizePrice>> GetAllItemSizePrices()
         {
-            return await FindAll().ToListAsync();
+            return await FindAll().Include(E => E.Size).ToListAsync();
         }
 
         public async Task<ItemSizePrice?> GetSingleItemSizePrice(Expression<Func<ItemSizePrice, bool>> expression)
         {
-            return await FindByCondition(expression).SingleOrDefaultAsync();
-        }
+            return await FindByCondition(expression).Include(E => E.Size).SingleOrDefaultAsync();
+        }        
 
         public void UpdateItemSizePrice(ItemSizePrice itemSizePrice)
         {
