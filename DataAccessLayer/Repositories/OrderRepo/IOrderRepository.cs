@@ -1,14 +1,15 @@
-﻿using DataAccessLayer.Repositories.BaseRepo;
+﻿using DataAccessLayer.Models;
+using DataAccessLayer.Repositories.BaseRepo;
 using System.Linq.Expressions;
 
 namespace DataAccessLayer.Repositories.OrderRepo
 {
-    public interface IOrderRepository : IRepositoryBase<OrderRepository>
+    public interface IOrderRepository : IRepositoryBase<Order>
     {
-        Task<List<OrderRepository>> GetAllOrders();
-        Task<OrderRepository?> GetSingleOrder(Expression<Func<OrderRepository, bool>> expression);
-        void CreateOrder(OrderRepository order);
-        void UpdateOrder(OrderRepository order);
-        void DeleteOrder(OrderRepository order);
+        Task<List<Order>> GetAllOrders();
+        Task<Order?> GetSingleOrder(Expression<Func<Order, bool>> expression);
+        void CreateOrder(Order order);
+        void UpdateOrder(Order order);
+        void DeleteOrder(Order order);
     }
 }

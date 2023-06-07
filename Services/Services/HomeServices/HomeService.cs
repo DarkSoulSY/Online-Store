@@ -1,14 +1,17 @@
-﻿
-using DataAccessLayer.Repositories.CartRepo;
-using DataAccessLayer.Repositories.UserRepo;
+﻿using DataAccessLayer.Entities;
+using DataAccessLayer.Models;
 using Services.common.HomeControllerDtos;
 using Services.common.Item;
-using Services.common.Role;
 using Services.common.SizePrice;
+using Services.Services.CartServices;
 using Services.Services.CategoryServices;
 using Services.Services.ItemServices;
-using Services.Services.ItemSizePriceServices;
+using Services.Services.ItemSizePriceOrderServices;
+using Services.Services.ItemSizePriceSizePriceServices;
+using Services.Services.OrderServices;
 using Services.Services.PictureServices;
+using Services.Services.SizeServices;
+using Services.Services.UserServices;
 
 namespace Services.Services.HomeServices
 {
@@ -18,10 +21,15 @@ namespace Services.Services.HomeServices
         private readonly IPictureService _picture;
         private readonly IItemService _item;
         private readonly IItemSizePriceService _itemSizePrice;
-        private readonly ICartRepository _cart;
-        private readonly IUserRepository _user;
+        private readonly ICartService _cart;
+        private readonly IUserService _user;
+        private readonly IOrderService _order;
+        private readonly IItemSizePriceOrderService _itemSizePriceOrder;
+        private readonly ISizeService _size;
 
-        public HomeService(ICategoryService category, IPictureService picture, IItemService item, IItemSizePriceService itemSizePrice, ICartRepository cart, IUserRepository user)
+        public HomeService(ICategoryService category, IPictureService picture, IItemService item, 
+            IItemSizePriceService itemSizePrice, ICartService cart, IUserService user, 
+            IOrderService order, IItemSizePriceOrderService itemSizePriceOrder)
         {
             _category = category;
             _picture = picture;
@@ -29,25 +37,33 @@ namespace Services.Services.HomeServices
             _itemSizePrice = itemSizePrice;
             _cart = cart;
             _user = user;
+            _order = order;
+            _itemSizePriceOrder = itemSizePriceOrder;
         }
 
-        public async Task AddToCart(string? username)
+        public async Task<bool> AddToCart(string? username, int item, string sizeName)
         {
-            if (username is not null)
+            var cart = await _user.GetUserByCondition(U => U.Username == username);
+            var checkOrderStatus = await _order.GetOrderByCondition(O => O.Status.Submitted == false && O.Cart == cart.Data!.Cart);
+            
+            if (checkOrderStatus.Data is null)
             {
-                var user = await _user.GetSingleUser(U => U.Username == username);
-                var existCart = await _cart.GetSingleCart(C => C.UserId == user.Id);
-                if (existCart is null) { 
-                    _cart.CreateCart(new DataAccessLayer.Models.Cart()
-                    {
-                        UserId = user.Id
-                    });
-                }
+                var order = await _order.CreateOrder(new Order() {
+                    CartId = cart.Data!.Cart.Id
+                });
+                checkOrderStatus = order;
             }
-
-
+            var isp = await _itemSizePrice.GetItemSizePriceByCondition(ISP => ISP.Item.Id == item && ISP.Size.Name == sizeName);
+            var create = await _itemSizePriceOrder.CreateItemSizePriceOrder(new ItemSizePriceOrder
+            {
+                Order = checkOrderStatus.Data!,
+                ItemSizePrice = isp.Data!
+            });
+            if (create.Success)
+                return true;
+            else 
+                return false;
         }
-
         public async Task<List<HomeModelDto>> GetHomeModel()
         {
             var categories = await _category.GetAllCategories();

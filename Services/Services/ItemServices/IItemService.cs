@@ -1,16 +1,16 @@
 ﻿
 using DataAccessLayer.Models;
 using Services.common.Role;
+using System.Linq.Expressions;
 
 namespace Services.Services.ItemServices
 {
     public interface IItemService
     {
         Task<ServiceResponse<List<Item>?>> GetAllItems();
-        //Task<ServiceResponse<int>> CreateRole(RoleDto roleDto);
-        //Task<ServiceResponse<bool?>> DeleteRole(RoleDto roleDto);
-        //Task<ServiceResponse<Role>> GetRoleByName(string name);
-        //Task<ServiceResponse<List<Role>?>> GetAllRoles();
-        //Task<ServiceResponse<int>> UpdateRole(RoleDto roleDto);
+        Task<ServiceResponse<int?>> CreateItem(Item roleDto);
+        Task<ServiceResponse<bool?>> DeleteItem(Item roleDto);
+        Task<ServiceResponse<Item>> GetItemByCondition(Expression<Func<Item, bool>> expression);        
+        Task<ServiceResponse<int>> UpdateItem(Item roleDto);
     }
 }

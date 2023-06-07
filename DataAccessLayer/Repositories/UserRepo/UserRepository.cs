@@ -18,7 +18,7 @@ namespace DataAccessLayer.Repositories.UserRepo
         }
         public async Task<User?> GetSingleUser(Expression<Func<User, bool>> expression)
         {
-            return await FindByCondition(expression).FirstOrDefaultAsync();
+            return await FindByCondition(expression).Include(U => U.Cart).FirstOrDefaultAsync();
         }
 
         public void CreateUser(User user)

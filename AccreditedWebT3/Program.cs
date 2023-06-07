@@ -14,6 +14,7 @@ using DataAccessLayer.Repositories.StatusRepo;
 using DataAccessLayer.Repositories.UserRepo;
 using DataAccessLayer.Repositories.WrapperRepo;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 using Services.Services.AuthService;
 using Services.Services.CartServices;
 using Services.Services.CategoryServices;
@@ -21,6 +22,7 @@ using Services.Services.HomeServices;
 using Services.Services.ItemServices;
 using Services.Services.ItemSizePriceOrderServices;
 using Services.Services.ItemSizePriceServices;
+using Services.Services.ItemSizePriceSizePriceServices;
 using Services.Services.OrderServices;
 using Services.Services.PermissionService;
 using Services.Services.PictureServices;
@@ -29,14 +31,17 @@ using Services.Services.SizeServices;
 using Services.Services.StatusServices;
 using Services.Services.UserPermissionService;
 using Services.Services.UserRoleService;
+using Services.Services.UserServices;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-builder.Services.AddDbContext<ApplicationContext>(options =>
-options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"), b => b.MigrationsAssembly("DataAccessLayer")));
+builder.Services.AddDbContext<ApplicationContext>(options => { options.EnableSensitiveDataLogging(true);
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"), b => b.MigrationsAssembly("DataAccessLayer"));
+    
+    });
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 builder.Services.AddDistributedMemoryCache();
 builder.Services.AddSession(options =>
@@ -79,6 +84,7 @@ builder.Services.AddScoped<IRoleService, RoleService>();
 builder.Services.AddScoped<ISizeService, SizeService>();
 builder.Services.AddScoped<IStatusService, StatusService>();
 builder.Services.AddScoped<IUserRoleService, UserRoleService>();
+builder.Services.AddScoped<IUserService, UserService>();
 
 var app = builder.Build();
 

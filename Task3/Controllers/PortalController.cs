@@ -20,7 +20,7 @@ namespace Task3.Controllers
             
             
         }
-        //[AllowAnonymous]
+        [AllowAnonymous]
         [HttpPost("Register")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]

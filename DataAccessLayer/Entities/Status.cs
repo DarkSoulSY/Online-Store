@@ -11,6 +11,7 @@ namespace DataAccessLayer.Models
         public int Id { get; set; }
         public bool Submitted { get; set; } = false;
         public Order Order { get; set; }
-        
+        public int OrderId { get; set; }
+
     }
 }

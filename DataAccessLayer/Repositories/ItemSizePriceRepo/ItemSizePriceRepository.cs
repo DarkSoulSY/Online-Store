@@ -34,7 +34,7 @@ namespace DataAccessLayer.Repositories.ItemSizePriceRepo
 
         public async Task<ItemSizePrice?> GetSingleItemSizePrice(Expression<Func<ItemSizePrice, bool>> expression)
         {
-            return await FindByCondition(expression).Include(E => E.Size).SingleOrDefaultAsync();
+            return await FindByCondition(expression).Include(E => E.Size).Include(E => E.Item).SingleOrDefaultAsync();
         }        
 
         public void UpdateItemSizePrice(ItemSizePrice itemSizePrice)
