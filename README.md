@@ -4,7 +4,8 @@ It might seem as one task but let met tell you its not, this task branched into 
 First I was required to create the entities of the provided ERD photo, setup the project, connect with database, create database context class, and then finally start
 creating the repositories, and services Moreover, i was asked to implement the DDD (Domain Driven Design) Pattern into my application.
 
-The goal first was to create a Web **API Project** (Application Programming Interface) which i did very well.
+The goal first was to create a Web **API Project** (Application Programming Interface) which i did very well. 
+Although when you look at it you might be wondering why its not entirely complete (I had to give the general idea that i know how to deal with all scnaerios, one to one, one to many, many to many) whilst also doing what they might specifically ask for specific entity.
 
 Techonologies, Patterns, Tools i have used:
 1- Repository Pattern
